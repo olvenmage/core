@@ -74,6 +74,7 @@ final class DocumentationNormalizer implements NormalizerInterface, CacheableSup
     private $oauthFlow;
     private $oauthTokenUrl;
     private $oauthAuthorizationUrl;
+    private $oauthRedirectUrl;
     private $oauthScopes;
     private $apiKeys;
     private $subresourceOperationFactory;
@@ -105,7 +106,7 @@ final class DocumentationNormalizer implements NormalizerInterface, CacheableSup
      * @param mixed|null                                                 $jsonSchemaTypeFactory
      * @param int[]                                                      $swaggerVersions
      */
-    public function __construct(ResourceMetadataFactoryInterface $resourceMetadataFactory, PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, $jsonSchemaFactory = null, $jsonSchemaTypeFactory = null, OperationPathResolverInterface $operationPathResolver, UrlGeneratorInterface $urlGenerator = null, $filterLocator = null, NameConverterInterface $nameConverter = null, bool $oauthEnabled = false, string $oauthType = '', string $oauthFlow = '', string $oauthTokenUrl = '', string $oauthAuthorizationUrl = '', array $oauthScopes = [], array $apiKeys = [], SubresourceOperationFactoryInterface $subresourceOperationFactory = null, bool $paginationEnabled = true, string $paginationPageParameterName = 'page', bool $clientItemsPerPage = false, string $itemsPerPageParameterName = 'itemsPerPage', $formats = [], bool $paginationClientEnabled = false, string $paginationClientEnabledParameterName = 'pagination', array $defaultContext = [], array $swaggerVersions = [2, 3])
+    public function __construct(ResourceMetadataFactoryInterface $resourceMetadataFactory, PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, $jsonSchemaFactory = null, $jsonSchemaTypeFactory = null, OperationPathResolverInterface $operationPathResolver, UrlGeneratorInterface $urlGenerator = null, $filterLocator = null, NameConverterInterface $nameConverter = null, bool $oauthEnabled = false, string $oauthType = '', string $oauthFlow = '', string $oauthTokenUrl = '', string $oauthAuthorizationUrl = '', string $oauthRedirectUrl = '', array $oauthScopes = [], array $apiKeys = [], SubresourceOperationFactoryInterface $subresourceOperationFactory = null, bool $paginationEnabled = true, string $paginationPageParameterName = 'page', bool $clientItemsPerPage = false, string $itemsPerPageParameterName = 'itemsPerPage', $formats = [], bool $paginationClientEnabled = false, string $paginationClientEnabledParameterName = 'pagination', array $defaultContext = [], array $swaggerVersions = [2, 3])
     {
         if ($jsonSchemaTypeFactory instanceof OperationMethodResolverInterface) {
             @trigger_error(sprintf('Passing an instance of %s to %s() is deprecated since version 2.5 and will be removed in 3.0.', OperationMethodResolverInterface::class, __METHOD__), E_USER_DEPRECATED);
@@ -153,6 +154,7 @@ final class DocumentationNormalizer implements NormalizerInterface, CacheableSup
         $this->oauthFlow = $oauthFlow;
         $this->oauthTokenUrl = $oauthTokenUrl;
         $this->oauthAuthorizationUrl = $oauthAuthorizationUrl;
+        $this->oauthRedirectUrl = $oauthRedirectUrl;
         $this->oauthScopes = $oauthScopes;
         $this->subresourceOperationFactory = $subresourceOperationFactory;
         $this->paginationEnabled = $paginationEnabled;
@@ -618,6 +620,7 @@ final class DocumentationNormalizer implements NormalizerInterface, CacheableSup
                 'flow' => $this->oauthFlow,
                 'tokenUrl' => $this->oauthTokenUrl,
                 'authorizationUrl' => $this->oauthAuthorizationUrl,
+                'redirectUrl' => $this->oauthRedirectUrl,
                 'scopes' => $this->oauthScopes,
             ];
 

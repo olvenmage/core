@@ -49,6 +49,7 @@ final class SwaggerUiAction
     private $oauthFlow;
     private $oauthTokenUrl;
     private $oauthAuthorizationUrl;
+    private $oauthRedirectUrl;
     private $oauthScopes;
     private $formatsProvider;
     private $swaggerUiEnabled;
@@ -61,7 +62,7 @@ final class SwaggerUiAction
     /**
      * @param int[] $swaggerVersions
      */
-    public function __construct(ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory, NormalizerInterface $normalizer, TwigEnvironment $twig, UrlGeneratorInterface $urlGenerator, string $title = '', string $description = '', string $version = '', $formats = [], $oauthEnabled = false, $oauthClientId = '', $oauthClientSecret = '', $oauthType = '', $oauthFlow = '', $oauthTokenUrl = '', $oauthAuthorizationUrl = '', $oauthScopes = [], bool $showWebby = true, bool $swaggerUiEnabled = false, bool $reDocEnabled = false, bool $graphqlEnabled = false, bool $graphiQlEnabled = false, bool $graphQlPlaygroundEnabled = false, array $swaggerVersions = [2, 3])
+    public function __construct(ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory, NormalizerInterface $normalizer, TwigEnvironment $twig, UrlGeneratorInterface $urlGenerator, string $title = '', string $description = '', string $version = '', $formats = [], $oauthEnabled = false, $oauthClientId = '', $oauthClientSecret = '', $oauthType = '', $oauthFlow = '', $oauthTokenUrl = '', $oauthAuthorizationUrl = '', $oauthRedirectUrl = '', $oauthScopes = [], bool $showWebby = true, bool $swaggerUiEnabled = false, bool $reDocEnabled = false, bool $graphqlEnabled = false, bool $graphiQlEnabled = false, bool $graphQlPlaygroundEnabled = false, array $swaggerVersions = [2, 3])
     {
         $this->resourceNameCollectionFactory = $resourceNameCollectionFactory;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
@@ -79,6 +80,7 @@ final class SwaggerUiAction
         $this->oauthFlow = $oauthFlow;
         $this->oauthTokenUrl = $oauthTokenUrl;
         $this->oauthAuthorizationUrl = $oauthAuthorizationUrl;
+        $this->oauthRedirectUrl = $oauthRedirectUrl;
         $this->oauthScopes = $oauthScopes;
         $this->swaggerUiEnabled = $swaggerUiEnabled;
         $this->reDocEnabled = $reDocEnabled;
@@ -150,6 +152,7 @@ final class SwaggerUiAction
             'flow' => $this->oauthFlow,
             'tokenUrl' => $this->oauthTokenUrl,
             'authorizationUrl' => $this->oauthAuthorizationUrl,
+            'redirectUrl' => $this->oauthRedirectUrl,
             'scopes' => $this->oauthScopes,
         ];
 

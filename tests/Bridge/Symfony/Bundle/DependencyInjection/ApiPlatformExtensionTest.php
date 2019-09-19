@@ -1056,6 +1056,7 @@ class ApiPlatformExtensionTest extends TestCase
             'api_platform.oauth.flow' => 'application',
             'api_platform.oauth.tokenUrl' => '/oauth/v2/token',
             'api_platform.oauth.authorizationUrl' => '/oauth/v2/auth',
+            'api_platform.oauth.redirectUrl' => 'localhost:3200/oauth2-redirect.html',
             'api_platform.oauth.scopes' => [],
             'api_platform.swagger.versions' => [2, 3],
             'api_platform.swagger.api_keys' => [],

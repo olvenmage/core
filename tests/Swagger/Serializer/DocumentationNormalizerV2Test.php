@@ -496,6 +496,7 @@ class DocumentationNormalizerV2Test extends TestCase
                     'flow' => 'application',
                     'tokenUrl' => '/oauth/v2/token',
                     'authorizationUrl' => '/oauth/v2/auth',
+                    'redirectUrl' => 'localhost:3200/oauthv2-redirect.html',
                     'scopes' => ['scope param'],
                 ],
             ],

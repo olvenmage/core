@@ -216,6 +216,7 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('flow')->defaultValue('application')->info('The oauth flow grant type.')->end()
                         ->scalarNode('tokenUrl')->defaultValue('/oauth/v2/token')->info('The oauth token url.')->end()
                         ->scalarNode('authorizationUrl')->defaultValue('/oauth/v2/auth')->info('The oauth authentication url.')->end()
+                        ->scalarNode('redirectUrl')->defaultValue('localhost:3200/oauth2-redirect.html')->info('The oauth redirect url.')->end()
                         ->arrayNode('scopes')
                             ->prototype('scalar')->end()
                         ->end()

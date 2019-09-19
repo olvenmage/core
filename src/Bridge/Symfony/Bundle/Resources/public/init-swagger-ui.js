@@ -53,6 +53,7 @@ window.onload = function() {
             SwaggerUIBundle.plugins.DownloadUrl,
         ],
         layout: 'StandaloneLayout',
+        oauth2RedirectUrl: data.oath.redirectUrl
     });
 
     if (data.oauth.enabled) {
